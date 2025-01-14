@@ -1,0 +1,25 @@
+.item {
+    width: 250px;
+    height: auto;
+    margin: 5px;
+    padding: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    align-items: left;
+}
+
+.paragraf {
+    padding-bottom: 0px;
+    margin: 0px;
+}
+
+.btn {
+    width: 60px;
+    height: 30px;
+    margin: 1px;
+    padding: 1px;
+}

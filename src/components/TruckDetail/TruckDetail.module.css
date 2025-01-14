@@ -1,0 +1,67 @@
+/* MovieCast */
+.container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.cartImagActor {
+    width: 100%;
+    display: flex;
+    gap: 10px;
+}
+
+.cartComent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+}
+
+.text {
+    font-size: 18px;
+}
+
+.comIte {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 92px;
+    height: 138px;
+    background-color: gray;
+
+}
+
+.icon {
+    width: 100%;
+    height: auto;
+}
+
+.error {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.buttonIcon {
+    width: 120px;
+    height: 30px;
+    padding: 2px;
+    margin: 2px;
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    align-items: center;
+}
+
+.icons {
+    width: 50px;
+    height: 25px;
+    padding: 0px;
+    margin: 0px;
+    color: rgb(255, 0, 34);
+    display: flex;
+    flex-direction: row;
+    text-align: right;
+    align-items: right;
+}
