@@ -1,7 +1,7 @@
 import css from "./TruckDetailsPage.module.css";
 import { Suspense, useEffect, useState, useRef } from "react";
 import { useParams } from "react-router-dom";
-import { getProductDetails } from "../../tmdb-movies";
+import { getProductDetails } from "../../tmbd-truck";
 import { GoArrowLeft } from "react-icons/go";
 import {
   NavLink,
@@ -31,11 +31,11 @@ export default function TruckDetailsPage() {
         setDetail(data);
         setLoading(false);
       } catch (error) {
-        setError("Sorry nothing found");
+        setError("Sorry nothing found", error);
       }
     }
     fechData();
-  }, [movieId]);
+  }, [movieId, loading, error]);
   // console.log(detail);
   return (
     <div>

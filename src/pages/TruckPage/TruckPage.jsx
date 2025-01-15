@@ -1,33 +1,42 @@
 // import css from "./TruckPage.module.css";
 import TruckList from "../../components/TruckList/TruckList";
 import { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+// import { useSearchParams } from "react-router-dom";
 import SearchBoxTruck from "../../components/SearchBoxTruck/SearchBoxTruck";
-import { getProductsSerch } from "../../tmdb-movies";
+import { fetchAllCampers } from "../../redux/campers/operations";
+import { useDispatch } from "react-redux";
 
 export default function TruckPage() {
-  const [products, setProduct] = useState([]);
-  const [params] = useSearchParams();
-  const owner = params.get("owner") ?? "";
+  const dispatch = useDispatch();
+  const [campers, setProduct] = useState([]);
+  // const [params] = useSearchParams();
+  // const owner = params.get("owner") ?? "";
 
   useEffect(() => {
     async function fetchData() {
-      const data = await getProductsSerch(owner);
-      setProduct(data);
+      try {
+        const data = await dispatch(fetchAllCampers()).unwrap();
+        // const data = await dispatch(fetchAllCampers(owner)).unwrap();
+        setProduct(data);
+      } catch (error) {
+        console.error("Помилка завантаження даних:", error);
+      }
     }
     fetchData();
-  }, [owner]);
+  }, [dispatch]);
 
   return (
     <>
       <main>
         <SearchBoxTruck />
-        {products.length > 0 && <TruckList products={products} />}
+        {campers.length > 0 && <TruckList campers={campers} />}
       </main>
     </>
   );
 }
 
+// Виклик Thunk-дії та розгортання, Якщо ви використовуєте @reduxjs/toolkit, метод unwrap() дозволяє обробляти результат thunk-дії як звичайний проміс.
+// setProduct(data); // Зберігаємо отримані дані
 // export default function TruckPage() {
 //   const dispatch = useDispatch();
 //   const isLoading = useSelector(selectLoading);

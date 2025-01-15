@@ -1,9 +1,9 @@
 // contactsSlice.js (це окрема локаль - locale-slice)
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchCampers } from "./operations";
+import { fetchAllCampers } from "./operations";
 
 const slice = createSlice({
-  name: "contacts",
+  name: "campers",
   initialState: {
     items: [],
     loading: false,
@@ -12,15 +12,15 @@ const slice = createSlice({
 
   extraReducers: builder => {
     builder
-      .addCase(fetchCampers.pending, state => {
+      .addCase(fetchAllCampers.pending, state => {
         state.loading = true;
       })
-      .addCase(fetchCampers.fulfilled, (state, action) => {
+      .addCase(fetchAllCampers.fulfilled, (state, action) => {
         state.items = action.payload;
         state.loading = false;
         state.error = null;
       })
-      .addCase(fetchCampers.rejected, (state, action) => {
+      .addCase(fetchAllCampers.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
       });

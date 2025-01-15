@@ -1,12 +1,13 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import  axios  from "axios";
+import axios from "axios";
 
-// axios.defaults.baseURL = "https://66ea54bb55ad32cda478635a.mockapi.io";
-axios.defaults.baseURL = "https://66b1f8e71ca8ad33d4f5f63e.mockapi.io/campers";
+// axios.defaults.baseURL = "/";
+// axios.defaults.baseURL = "https://66b1f8e71ca8ad33d4f5f63e.mockapi.io/campers";
+axios.defaults.baseURL = "https://66b1f8e71ca8ad33d4f5f63e.mockapi.io";
 
-export const fetchCampers = createAsyncThunk(
-  "campers/fetchAll",
-  // in fetchContact Використовуємо символ підкреслення як ім'я першого параметра, тому що в цій операції він нам не потрібен ( а пусто не можна залишати!)
+export const fetchAllCampers = createAsyncThunk(
+  "campers/fetchAllCampers",
+  // in fetchCampers Використовуємо символ підкреслення як ім'я першого параметра, тому що в цій операції він нам не потрібен ( а пусто не можна залишати!)
   async (_, thunkAPI) => {
     try {
       const response = await axios.get("/campers");
@@ -26,7 +27,8 @@ export const oneCampers = createAsyncThunk(
   // in fetchContact Використовуємо символ підкреслення як ім'я першого параметра, тому що в цій операції він нам не потрібен ( а пусто не можна залишати!)
   async (_id, thunkAPI) => {
     try {
-      const response = await axios.get("/campers/:id");
+      // const response = await axios.get("/campers/:id");
+      const response = await axios.get(`/campers/${_id}`);
       // При успішному запиті повертаємо проміс із даними з бекенду
       return response.data;
     } catch (e) {

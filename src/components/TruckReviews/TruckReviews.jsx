@@ -3,7 +3,7 @@ import css from "./TruckReviews.module.css";
 import { FcCamcorderPro } from "react-icons/fc";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getProductReviews } from "../../tmdb-movies";
+import { getProductReviews } from "../../tmbd-truck";
 import Loader from "../Loader/Loader";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import { GoArrowLeft } from "react-icons/go";
@@ -64,6 +64,7 @@ const TruckReviews = () => {
         <p className={css.error}> Any reviews for this movie!</p>
       )}
       <button className={css.buttonIcon}>
+        <NavLink to="/catalog/:id">Show more</NavLink>
         <GoArrowLeft className={css.icons} />{" "}
         <NavLink to={location.state ?? "/"}>Go back</NavLink>{" "}
       </button>
@@ -72,3 +73,4 @@ const TruckReviews = () => {
 };
 
 export default TruckReviews;
+// Show more додати цю кнопку щоб переходити до деталій авто

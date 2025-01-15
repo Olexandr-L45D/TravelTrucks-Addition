@@ -3,10 +3,10 @@
 import { configureStore } from "@reduxjs/toolkit";
 import tasksReducerCard from "./campers/slice";
 import { filtersReducer } from "./filters/slice";
-
+import { authReducer } from "./auth/slice";
 import {
   persistStore,
-  // persistReducer,
+  persistReducer,
   FLUSH,
   REHYDRATE,
   PAUSE,
@@ -14,18 +14,23 @@ import {
   PURGE,
   REGISTER,
 } from "redux-persist";
-// import storage from "redux-persist/lib/storage";
+import storage from "redux-persist/lib/storage";
 
-// const persistedAuthReducer = persistReducer({
-//   key: "jwt-token",
-//   storage,
-//   whitelist: ["token"],
-// });
+const persistedAuthReducer = persistReducer(
+  {
+    key: "jwt-token",
+    storage,
+    whitelist: ["token"],
+  },
+  authReducer
+);
 
 export const store = configureStore({
   reducer: {
     campers: tasksReducerCard,
     filters: filtersReducer,
+    auth: persistedAuthReducer,
+    // auth: authReducer, (початково без Локал Сторедж)
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({

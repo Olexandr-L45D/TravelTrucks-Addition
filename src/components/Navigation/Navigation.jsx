@@ -14,7 +14,7 @@ export default function Navigation() {
           Home
         </NavLink>
         <NavLink to="/catalog" className={newLinkClass}>
-          Trucks
+          View Now
         </NavLink>
       </nav>
     </header>

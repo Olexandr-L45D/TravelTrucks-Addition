@@ -4,6 +4,10 @@ import css from "./App.module.css";
 const Navigation = lazy(() => import("../Navigation/Navigation"));
 const HomePage = lazy(() => import("../../pages/HomePage/HomePage"));
 const TruckPage = lazy(() => import("../../pages/TruckPage/TruckPage"));
+// const TrucksCatalog = lazy(() =>
+//   import("../../pages/TrucksCatalog/TrucksCatalog")
+// );
+
 const NotFoundPage = lazy(() => import("../../pages/NotFoundPage"));
 const TruckDetailsPage = lazy(() =>
   import("../../pages/TruckDetailsPage/TruckDetailsPage")
@@ -22,7 +26,7 @@ export default function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/catalog" element={<TruckPage />} />
           <Route path="/catalog/:id" element={<TruckDetailsPage />}>
-            <Route path="campers" element={<TruckDetail />} />
+            <Route path="detail" element={<TruckDetail />} />
             <Route path="reviews" element={<TruckReviews />} />
           </Route>
           <Route path="*" element={<NotFoundPage />} />
@@ -31,3 +35,6 @@ export default function App() {
     </div>
   );
 }
+
+//  <Route path="/catalog" element={<TruckPage />} />;
+// <Route path="/catalog" element={<TrucksCatalog />} />
